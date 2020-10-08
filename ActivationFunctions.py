@@ -1,4 +1,4 @@
-import numpy.exp as np_exp
+from numpy import exp as np_exp
 
 def sigmoid(x):
     """
