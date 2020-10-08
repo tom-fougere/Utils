@@ -1,4 +1,4 @@
-from numpy import exp
+import numpy.exp as np_exp
 
 def sigmoid(x):
     """
@@ -10,7 +10,7 @@ def sigmoid(x):
     s -- sigmoid(x)
     """
 
-    s = 1 / (1 + np.exp(-x))
+    s = 1 / (1 + np_exp(-x))
     
     return s
     
@@ -24,6 +24,6 @@ def sigmoid_grad(x):
     s -- d_sigmoid(x)/dx
     """
 
-    s = simoid(x) * (1 - sigmoid(x))
+    s = sigmoid(x) * (1 - sigmoid(x))
     
     return s
