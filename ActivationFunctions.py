@@ -1,29 +1,90 @@
 from numpy import exp as np_exp
 
+
 def sigmoid(x):
     """
     Compute the sigmoid of x
     Y = 1 / (1 + exp(-x))
     Arguments:
-    z -- A scalar or numpy array of any size
+    x -- A scalar or numpy array of any size
     Return:
-    s -- sigmoid(x)
+    y -- sigmoid(x)
     """
 
-    s = 1 / (1 + np_exp(-x))
+    y = 1 / (1 + np_exp(-x))
     
-    return s
-    
+    return y
+
+
 def sigmoid_grad(x):
     """
     Compute the derivative of sigmoid of x
     d(sigmoid)/dx = sigmoid(x) * (1 - sigmoid(x))
     Arguments:
-    z -- A scalar or numpy array of any size
+    x -- A scalar or numpy array of any size
     Return:
-    s -- d_sigmoid(x)/dx
+    y -- d_sigmoid(x)/dx
     """
 
-    s = sigmoid(x) * (1 - sigmoid(x))
+    y = sigmoid(x) * (1 - sigmoid(x))
     
-    return s
+    return y
+
+
+def relu(x):
+    """
+    Compute the Rectified Linear Unit of x
+    y=x if x > 0, else x = 0
+    Arguments:
+    x -- A scalar or numpy array of any size
+    Return:
+    y -- relu(x)
+    """
+
+    y = x * (x > 0)
+
+    return y
+
+
+def relu_grad(x):
+    """
+    Compute the Derivative of Rectified Linear Unit of x
+    y=1.0 if x > 0, else x = 0
+    Arguments:
+    x -- A scalar or numpy array of any size
+    Return:
+    y -- d_relu(x)/dx
+    """
+
+    y = 1. * (x > 0)
+
+    return y
+
+
+def tanh(x):
+    """
+    Compute the Tangent hyperbolic of x
+    Arguments:
+    x -- A scalar or numpy array of any size
+    Return:
+    y -- tanh(x)
+    """
+
+    y = (np_exp(x) - np_exp(-x)) / (np_exp(x) + np_exp(-x))
+
+    return y
+
+
+def tanh_grad(x):
+    """
+    Compute the Derivative of Tangent hyperbolic of x
+    y=1.0 if x > 0, else x = 0
+    Arguments:
+    x -- A scalar or numpy array of any size
+    Return:
+    y -- d_relu(x)/dx
+    """
+
+    y = 1 - tanh(x)**2
+
+    return y
