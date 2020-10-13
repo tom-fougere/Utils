@@ -4,6 +4,7 @@ from numpy import exp as np_exp
 def sigmoid(x):
     """
     Compute the sigmoid of x
+    
     Y = 1 / (1 + exp(-x))
     Arguments:
     x -- A scalar or numpy array of any size
@@ -20,6 +21,7 @@ def sigmoid_grad(x):
     """
     Compute the derivative of sigmoid of x
     d(sigmoid)/dx = sigmoid(x) * (1 - sigmoid(x))
+    
     Arguments:
     x -- A scalar or numpy array of any size
     Return:
@@ -35,6 +37,7 @@ def relu(x):
     """
     Compute the Rectified Linear Unit of x
     y=x if x > 0, else x = 0
+    
     Arguments:
     x -- A scalar or numpy array of any size
     Return:
@@ -50,6 +53,7 @@ def relu_grad(x):
     """
     Compute the Derivative of Rectified Linear Unit of x
     y=1.0 if x > 0, else x = 0
+    
     Arguments:
     x -- A scalar or numpy array of any size
     Return:
@@ -64,6 +68,7 @@ def relu_grad(x):
 def tanh(x):
     """
     Compute the Tangent hyperbolic of x
+    
     Arguments:
     x -- A scalar or numpy array of any size
     Return:
@@ -79,6 +84,7 @@ def tanh_grad(x):
     """
     Compute the Derivative of Tangent hyperbolic of x
     y=1.0 if x > 0, else x = 0
+    
     Arguments:
     x -- A scalar or numpy array of any size
     Return:
