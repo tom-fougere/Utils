@@ -1,34 +1,38 @@
 from numpy import exp as np_exp
 
 
-def sigmoid(x):
+def sigmoid(x, alpha=1):
     """
     Compute the sigmoid of x
-    
-    Y = 1 / (1 + exp(-x))
+    Y = 1 / (1 + exp(-alpha*x))
+
     Arguments:
     x -- A scalar or numpy array of any size
+    alpha -- A scalar of size (1,1)
+
     Return:
     y -- sigmoid(x)
     """
 
-    y = 1 / (1 + np_exp(-x))
+    y = 1 / (1 + np_exp(-alpha*x))
     
     return y
 
 
-def sigmoid_grad(x):
+def sigmoid_grad(x, alpha=1):
     """
     Compute the derivative of sigmoid of x
     d(sigmoid)/dx = sigmoid(x) * (1 - sigmoid(x))
     
     Arguments:
     x -- A scalar or numpy array of any size
+    alpha -- A scalar of size (1,1)
+
     Return:
     y -- d_sigmoid(x)/dx
     """
 
-    y = sigmoid(x) * (1 - sigmoid(x))
+    y = sigmoid(x, alpha) * (1 - sigmoid(x, alpha))
     
     return y
 
