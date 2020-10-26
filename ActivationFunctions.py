@@ -83,12 +83,12 @@ def tanh(x):
 def tanh_grad(x):
     """
     Compute the Derivative of Tangent hyperbolic of x
-    y=1.0 if x > 0, else x = 0
+    y = 1 - tanh(x)^2
     
     Arguments:
     x -- A scalar or numpy array of any size
     Return:
-    y -- d_relu(x)/dx
+    y -- d_tanh(x)/dx
     """
 
     y = 1 - tanh(x)**2
