@@ -17,7 +17,7 @@ def mse(actual_val, estimated_val):
     error -- A scalar or numpy array of size (1, Nb features)
     """
 
-    y = np_mean((estimated_val - actual_val)**2, axis=0, keepdims=True)
+    y = np_mean((estimated_val - actual_val)**2)
 
     return y
 
@@ -55,7 +55,7 @@ def binary_cross_entropy(actual_val, estimated_val):
     error -- A scalar or numpy array of size (1, Nb features)
     """
 
-    error = - np_mean(actual_val * np_log(estimated_val) + (1 - actual_val) * np_log(1 - estimated_val), axis=0, keepdims=True)
+    error = - np_mean(actual_val * np_log(estimated_val) + (1 - actual_val) * np_log(1 - estimated_val))
 
     return error
 
