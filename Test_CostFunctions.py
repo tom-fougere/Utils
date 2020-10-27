@@ -3,12 +3,12 @@ import numpy as np
 
 
 def test_mse():
-    act_val = np.array([[0., 1., 2.], [2., 0., 0.]])
-    est_val = np.array([[1., 0., 2.], [2., 3., 4.]])
+    act_val = np.array([[0., 1., 2.]])
+    est_val = np.array([[1., 0., 2.]])
     y_mse = mse(act_val, est_val)
     y_mse_grad = mse_grad(act_val, est_val)
-    np.testing.assert_almost_equal(y_mse, np.array([1, 10, 16], ndmin=2)/2)
-    np.testing.assert_almost_equal(y_mse_grad, np.array([2, 4, 8], ndmin=2)/2)
+    np.testing.assert_almost_equal(y_mse, 2./3.)
+    np.testing.assert_almost_equal(y_mse_grad, np.array([[1., -1., 0.]])*2)
 
 
 def test_bce_single_value():
@@ -38,12 +38,12 @@ def test_bce_single_value():
 
 
 def test_bce_matrix():
-    act_val = np.array([[1., 1., 1.], [1., 1., 1.]])
-    est_val = np.array([[0.9999, 0.9999, 0.9999], [0.0001, 0.9999, 0.9999]])
+    act_val = np.array([[1., 1.], [1., 1.]])
+    est_val = np.array([[0.9999, 0.9999], [0.0001, 0.9999]])
     y_bce = binary_cross_entropy(act_val, est_val)
-    np.testing.assert_almost_equal(y_bce, [[(-np.log(0.9999) - np.log(0.0001))/2, -np.log(0.9999), -np.log(0.9999)]])
+    np.testing.assert_almost_equal(y_bce, (-np.log(0.9999)*3 - np.log(0.0001))/4)
 
     y_bce_grad_act0_est0 = binary_cross_entropy_grad(act_val, est_val)
-    np.testing.assert_almost_equal(y_bce_grad_act0_est0, [[(-10000 - 1.0001)/2, -1.0001, -1.0001]])
+    np.testing.assert_almost_equal(y_bce_grad_act0_est0, [[(-10000 - 1.0001)/2, -1.0001]])
 
 

@@ -2,6 +2,8 @@ from numpy import mean as np_mean
 from numpy import log as np_log
 from numpy import divide as np_divide
 
+EPSILON = 1e-10
+
 
 def mse(actual_val, estimated_val):
     """
@@ -17,7 +19,7 @@ def mse(actual_val, estimated_val):
     error -- A scalar or numpy array of size (1, Nb features)
     """
 
-    y = np_mean((estimated_val - actual_val)**2, axis=0, keepdims=True)
+    y = np_mean((estimated_val - actual_val)**2)
 
     return y
 
@@ -55,7 +57,11 @@ def binary_cross_entropy(actual_val, estimated_val):
     error -- A scalar or numpy array of size (1, Nb features)
     """
 
-    error = - np_mean(actual_val * np_log(estimated_val) + (1 - actual_val) * np_log(1 - estimated_val), axis=0, keepdims=True)
+    # Fix issue with log computation. Error would become undefined
+    estimated_val[estimated_val == 1.] = 1 - EPSILON
+    estimated_val[estimated_val == 0.] = EPSILON
+
+    error = - np_mean(actual_val * np_log(estimated_val) + (1 - actual_val) * np_log(1 - estimated_val))
 
     return error
 
