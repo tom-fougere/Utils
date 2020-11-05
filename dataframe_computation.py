@@ -35,7 +35,7 @@ def get_my_info(df):
         count_val = len(columnData)
         unique_val = columnData.nunique()
         count_nan_val = len(columnData) - columnData.count()
-        most_common_val = columnData.value_counts()[:1]
+        most_common_val = columnData.value_counts().head(1)
         top_val = most_common_val.index.tolist()[0]
         freq_val = most_common_val.values[0]
         type_val = columnData.dtype
