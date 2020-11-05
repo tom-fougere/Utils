@@ -3,6 +3,26 @@ import numpy as np
 
 
 def get_my_info(df):
+    """
+    Display informations and statistics about a dataframe
+    Info:
+        - Type: Dtype of element
+        - Count: number of elements
+        - Unique: number of unique elements
+        - Count_nan: Number of NaN elements
+        - Top: Most common element
+        - Freq: Occurrence of the most common element
+        - Mean: Mean values (for scalar elements)
+        - Median: Median values (for scalar elements)
+        - Std: Standard deviation (for scalar elements)
+        - Min: Minimal values (for scalar elements)
+        - Max: Maximal value (for scalar elements)
+
+    Arguments:
+    df -- pandas dataframe
+    Return:
+    df_info -- pandas dataframe with information
+    """
 
     # New dataframe
     df_info = pd.DataFrame()
