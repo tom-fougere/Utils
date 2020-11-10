@@ -2,7 +2,25 @@ import pandas as pd
 import numpy as np
 
 
-def get_my_info(df):
+def get_nb_rows_with_nan(df):
+    """
+    Extract the number of rows including NaN values (NaN, Inf)
+
+    Arguments:
+    df -- pandas dataframe
+    Return:
+    nb_rows -- integer corresponding to the number of rows with NaN value(s)
+    percent -- scalar corresponding to the percent of rows with NaN in all dataframe (between 0 and 1.)
+    """
+    data = df.T.isnull().any().value_counts()
+
+    nb_rows = data[1]
+    percent = nb_rows / (nb_rows + data[0])
+
+    return nb_rows, percent
+
+
+def get_stats_from_dataframe(df):
     """
     Display informations and statistics about a dataframe
     Info:
